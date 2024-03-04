@@ -1,0 +1,14 @@
+.type Class <: symbol
+
+.decl DirSupClass(a:Class, b:Class)
+.input DirSupClass(filename="DirectSuperclass.facts")
+
+.decl DirSupInt(a:Class, b:Class)
+.input DirSupInt(filename="DirectSuperinterface.facts")
+
+.decl SubClass(a:Class, b:Class ) 
+.output SubClass
+
+SubClass(X,Y) :- DirSupClass(Y, X).
+SubClass(X,Y) :- DirSupInt(Y, X).
+SubClass(X,Y) :- SubClass(X,Z), SubClass(Z,Y).
